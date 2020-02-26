@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let mySymbol = Symbol('hello');
+        
+        // 第一种写法
+        let a = {};
+        a[mySymbol] = 'cnyangx--a';
+
+        // 第二种写法
+        let b = {
+            [mySymbol]: 'cnyangx---b'
+        }
+
+        // 第三种写法
+        let c = {};
+        Object.defineProperty(c, mySymbol, {value: 'cnyangx---c'});
+        c.name = 'wode symbols'
+        // 以上写法都得到同样的结果
+        
+        console.log(a[mySymbol]);   // cnyangx
+        console.log(b[mySymbol]);   // cnyangx
+        console.log(c[mySymbol]);   // cnyangx
+        console.log(a, b, c);
+        
+
+        let keys = Object.keys(c);
+        console.log('keys: ' , keys);
+        let names = Object.getOwnPropertyNames(c);
+        console.log(names);
+        console.log(JSON.stringify(names));
+        let printSymbols = Object.getOwnPropertySymbols(c);
+        console.log(printSymbols);
+        
+    </script>
+</body>
+</html>

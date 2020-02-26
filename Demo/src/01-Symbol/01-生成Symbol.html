@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>生成Symbol</title>
+</head>
+
+<body>
+    <script>
+        let s1 = Symbol('foo');
+        let s2 = Symbol('bar');
+        s1
+        s2
+        
+        let s3 = Symbol();
+        let s4 = Symbol();
+        
+        let s5 = Symbol('yangx');
+        let s6 = Symbol('yangx');
+        /* 
+            Symbol每次生成都是一个独一无二的值
+        */
+        console.log(s5 === s6);     // false 
+        console.log(s1);    // Symbol(foo)
+        console.log(s2);    // Symbol(bar)
+        console.log(s3);    // Symbol()
+        console.log(s4);    // Symbol()
+
+    </script>
+</body>
+
+</html>

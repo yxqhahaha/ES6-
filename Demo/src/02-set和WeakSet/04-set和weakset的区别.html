@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>div lalala </div>
+    <script>
+        let div = document.querySelector('div');
+        /* let set = new Set();
+        set.add(div);
+        console.log(div);
+        
+        document.body.removeChild(div); // 因为是强引用，实际上没有删除，会造成内存溢出现象
+        div = null; // dom对象仍在内存中, 因为Set中W仍然用此对象
+        */
+
+        let weakset = new WeakSet();
+        weakset.add(div);
+
+        document.body.removeChild(div);
+        div = null; // dom对象已经没有引用，会被垃圾回收机制回收
+    </script>
+</body>
+</html>

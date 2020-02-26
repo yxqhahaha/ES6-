@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        console.log(NaN === NaN);
+        
+        // 使用indexOf缺点： 时间复杂度O(n^2) NaN 要做特殊处理
+        function deduplication(arr) {
+            let temp = [];
+            for(let i = 0; i < arr.length; i++){
+                if(temp.indexOf(arr[i]) === -1){
+                    temp.push(arr[i])
+                }
+            }
+            return temp;
+        }
+
+        let result = deduplication([NaN, NaN, 1, 2,2,1]);
+        console.log(result);        // [NaN, NaN, 1, 2]
+
+
+        // 使用对象解决性能问题 时间复杂度为O(n) 但是数组里不能又对象，也无法区分字符串和数字
+        function deduplication2(arr) {
+            let temp = {};
+            for(let i = 0; i< arr.length; i++) {
+                if(!temp[arr[i]]){
+                    temp[arr[i]] = true;
+                }
+            }
+            return Object.keys(temp)
+        }
+        let result2 = deduplication2([NaN, NaN, 1, 2,2,1]);
+        console.log(result2);        // ["1", "2", "NaN"]
+
+        // 使用set去重
+        function deduplication3(arr) {
+            let temp = [...(new Set(arr))];
+            return temp;
+        }
+        let result3 = deduplication3([NaN, NaN, 1, 2,2,1]);
+        console.log(result3);   // [NaN, 1, 2] 
+    </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* Set里面’数组‘没有索引概念  */
+        var a = new Set([1,2,3,4]);
+        a.add(5).add(3).add(7);
+
+        // .keys()  返回键名 
+        for(let key of a.keys()){
+            console.log(key);
+        }
+
+        // .values()  返回键值
+        for(let key2 of a.values()){
+            console.log(key2);
+        }
+        
+        // .entries()  返回键值对的遍历器
+        for(let key3 of a.entries()){
+            console.log(key3);  // [1, 1]  [2, 2] [3, 3]....
+        }
+
+        // .forEach()  使用函数回调遍历每个成员
+       a.forEach((key4, value) => {
+           console.log(key4, value);    // 1 1  2 2   3 3.....
+       })
+    </script>
+</body>
+</html>
