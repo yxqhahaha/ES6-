@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 参考阮一峰 ES6
+        let obj = {};
+        let func = function(){
+
+        }
+
+        let proxy = new Proxy(obj, {
+            get(target, key, receiver){
+                console.log('get拦截'+ key);
+            },
+            set(target, key, value, receiver) {
+                console.log('set拦截' + key);
+            },
+            has(target, propKey) {
+                console.log('has拦截' );
+            },
+            deleteProperty(target, propKey) {
+                console.log('deleteProperty拦截' );
+            },
+            ownKeys(target) {
+                console.log('ownKeys拦截');
+                return []
+            },
+            getOwnPropertyDescriptor(target, propKey){
+                console.log('getOwnPropertyDescriptor拦截');
+
+            },
+            defineProperty(target, propKey, propDesc){
+                console.log('defineProperty拦截');
+                return true;
+            },
+            preventExtensions(target){
+                console.log('preventExtensions拦截');
+            },
+            getPrototypeOf(target){
+                console.log('getPrototypeOf拦截');
+                return {}
+            },
+            isExtensible(target){
+                console.log('isExtensible拦截');
+            },
+            setPrototypeOf(target, proto){
+                console.log('setPrototypeOf拦截');
+                return true;
+            },
+            apply(target, object, args){
+                console.log('apply拦截');
+            },
+            construct(target, args){
+                console.log('construct拦截');
+            },
+        })
+
+        console.log(proxy.a);
+        let a = 1;
+        console.log(a in proxy);    // has拦截  false
+        Object.setPrototypeOf(proxy, {});   // setPrototypeOf拦截  
+        // proxy();  // 代理函数时可以用 否则会报错
+    </script>
+</body>
+</html>

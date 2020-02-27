@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let target = {};
+        let property = 'a';
+
+        Object.defineProperty(target, property, {
+            configurable: false,
+            value: 1
+        })
+
+        // 老写法
+        try {
+            Object.defineProperty(target, property, {
+                configurable: true,
+            })
+            // success
+        } catch (e) {
+            // failure
+            console.log(e);
+            /* 
+            TypeError: Cannot redefine property: a
+            at Function.defineProperty (<anonymous>)
+            at 01-Reflect用法.html:20
+        */
+        }
+
+        // 新写法
+        console.log('jieguo : ', Reflect.defineProperty(target, property, {
+            configurable: true,
+        }));
+        if(Reflect.defineProperty(target, property, {
+            configurable:true
+        })) {
+            // success
+
+        }else {
+            console.log('Reflect 失败');
+            
+        }
+        
+    </script>
+</body>
+</html>
