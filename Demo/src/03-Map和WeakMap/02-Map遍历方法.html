@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let b = new Map();
+        b.set({}, 1);
+        b.set(undefined, 1);
+        b.set(1, 1);
+        b.set('cnyangx', 1109);
+        console.log(b);
+
+        //  .keys(); 返回键名的遍历器
+        for( let key of b.keys()){
+            console.log(key);
+        }
+
+        // .values  // 返回键值
+        for( let key of b.values()){
+            console.log(key);
+        }
+
+        // .entries()   返回键值对
+        for( let key of b.entries()){
+            console.log(key);
+        }
+
+        // forEach  // 使用回调函数遍历每个成员
+        b.forEach(( key, value) => {
+            console.log(key, value);
+        })
+    </script>
+</body>
+</html>

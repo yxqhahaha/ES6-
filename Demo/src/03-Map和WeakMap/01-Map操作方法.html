@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 初始化Map实例
+        const map1 = new Map();
+        const map2 = new Map([
+            ['name', '张三'],
+            ['title', 'Author']
+        ]);
+
+        // size
+        let a = new Map();
+        console.log(a.size);    // 0
+        a.set('name', 'cnyangx');
+        console.log(a.size);    // 1
+        
+        // set 方法 传入键值对
+        let b = new Map();
+        b.set({}, 1);
+        b.set(undefined, 1);
+        b.set(1, 1);
+        b.set('cnyangx', 1109);
+        console.log(b);
+        
+        // get 方法
+        console.log(b.get('cnyangx'));  // 1109
+
+        // has 方法
+        console.log(a.has('name')); // true
+
+        // delete 方法
+        console.log(b.delete(undefined));
+        console.log(b);
+        
+        // clear() 方法
+        a.clear();    // 该方法没有返回值，或者返回值为undefined 
+        console.log(a);
+    </script>
+</body>
+</html>

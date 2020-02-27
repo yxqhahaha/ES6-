@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var Person = (function(){
+            var wm = new WeakMap();
+
+            function Person(name){
+                wm.set(this, name)
+            }
+
+            Person.prototype.getName = function(){
+                return wm.get(this)
+            };
+
+            return Person;
+        }());
+
+        let cnyangx = new Person('cnyangx');
+        let yangx = new Person('yangx');
+        console.log(cnyangx.getName());
+        cnyangx = null;
+        console.log(yangx);
+        
+        
+    </script>
+</body>
+</html>

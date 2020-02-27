@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 使用Map完善私有属性的实现
+        var Person = (function(){
+            var map = new Map();
+
+            function Person(name, age){
+                var privateProperty = {
+                    name : name,
+                    age : age
+                }
+                map.set(this.privateProperty);
+            }
+
+            Person.prototype.getName = function(){
+                return map.get(this).name;
+            };
+            
+            Person.prototype.getAge = function(){
+                return map.get(this).age;
+            };
+
+            return Person;
+        }())
+    </script>
+</body>
+</html>

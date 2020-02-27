@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Chicken {
+        }
+
+        // 100 只鸡
+        let chickenList = [];
+        for (let i = 0; i < 100; i++){
+            chickenList.push(new Chicken())
+        }
+
+        // 方法1： 记录到鸡身上
+        chickenList.forEach( (chicken, index) => {
+            Chicken.weight = getWeight(Chicken);
+        })
+
+        // 方法2： 记录到文本上
+        let notebook = [];
+        chickenList.forEach( function(chicken, index) {
+            notebook[index] = getWeight(chicken);
+        })
+    </script>
+</body>
+</html>
