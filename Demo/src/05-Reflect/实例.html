@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let obj = {};
+
+        let proxy = new Proxy(obj, {
+            set: function(target, name, value, receiver) {
+                // var success = Reflect.set(target, name, value, receiver);
+                // target[name] = value;
+                if (success) {
+                    console.log('property' + name + 'on' + target + 'set to' + value);
+                }
+                return success;
+            }
+        })
+        
+
+        let func =function(){
+
+        }
+        func.apply = function(){
+            console.log('apply');
+            
+        }
+
+        Function.prototype.apply.call(func,{}, [])
+        Reflect.apply(func, {}, [])
+    </script>
+
+</body>
+</html>
