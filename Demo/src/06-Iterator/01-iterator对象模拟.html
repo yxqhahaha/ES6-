@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let it = makeIterator();
+        function makeIterator(){    // 返回一个遍历器对象
+            var netIndex = 0;
+            return {
+                next: function(){
+                    return nextIndex < 5 ? {value: nextIndex++, done:false } : {value: undefined, done: true}
+                }
+            };
+        }
+        let obj = new Object();
+        let a = obj[Symbol.iterator];
+        console.log(a);
+        
+    </script>
+</body>
+</html>
