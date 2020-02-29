@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    /* 捕捉错误*/
+    async function f() {
+        try {
+            let data = await new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    reject('123')
+                }, 2000)
+            });
+            // 后续代码无法执行
+            console.log('无法执行的代码 。。。。 ')
+        }catch (e) {
+            console.log(e + '发生错误')
+        }
+    }
+    f()
+</script>
+</body>
+</html>

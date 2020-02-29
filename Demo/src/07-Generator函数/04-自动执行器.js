@@ -2,8 +2,8 @@
 const {readFile} = require('fs');
 const path = require('path')
 
-const file1 = path.join(__dirname, './txt/1.txt')
-const file2 = path.join(__dirname, './txt/2.txt')
+const file1 = path.join(__dirname, './text/1.txt')
+const file2 = path.join(__dirname, './text/2.txt')
 
 let Thunk = function(fileName) {
     return function (callback) {
@@ -28,3 +28,5 @@ function run(foo) {
         result.value(nextStep)  // 执行readFile，并且把nextStep作为回调传入
     }
 }
+
+run(foo)

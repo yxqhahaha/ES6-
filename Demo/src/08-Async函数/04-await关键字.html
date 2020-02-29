@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        /* await Promise实例*/
+        async function foo(){
+            let data = await new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve('a')
+                }, 2000)
+            })
+            console.log(data)
+        }
+        foo()
+    </script>
+</body>
+</html>
