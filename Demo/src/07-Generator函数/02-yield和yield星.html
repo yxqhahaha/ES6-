@@ -29,7 +29,6 @@
         console.log(b.next());
         console.log(b.next());
         
-
         // yield的返回值
         function* foo3(){
             console.log('start');
@@ -39,6 +38,19 @@
         let c = foo3();
         console.log(c.next());
         console.log(c.next());
+        
+
+        // yield*
+        function* foo4(){
+            yield 'start'
+            yield* [1,2,3,4,5]
+        }
+        let d = foo4()
+        console.log(d.next());  // start
+        console.log(d.next());  // 1    {value: 1, done: false}
+        console.log(d.next());  // 2
+        console.log(d.next());  // 3
+        console.log(d.next());  // 4
         
     </script>
 </body>
