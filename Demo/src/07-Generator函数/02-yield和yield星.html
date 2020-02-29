@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // yield后的表达式表示next返回的value
+        function* foo(){
+            yield 1
+        }
+
+        let a = foo();
+        // a.next();
+        console.log(a.next());      // {value: 1, done: false}
+        
+        // yield暂停函数
+        function* foo2(){
+            console.log('1');
+            yield 1
+            console.log('2');
+            yield 2
+            console.log('3');
+        }
+        let b = foo2();
+        console.log(b.next());
+        console.log(b.next());
+        console.log(b.next());
+        
+
+        // yield的返回值
+        function* foo3(){
+            console.log('start');
+            let result = yield 1
+            console.log('result:' +result); // result:undefined
+        }
+        let c = foo3();
+        console.log(c.next());
+        console.log(c.next());
+        
+    </script>
+</body>
+</html>
