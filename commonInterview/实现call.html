@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function setDetails(name, color) {
+            this.name = name;
+            this.color = color;
+        }
+
+        let cat1 = {};
+        let cat3 = {};
+        setDetails.call(cat1, '橘猫', '橘黄');
+        setDetails.call(cat3, '哈士奇', '奶白');
+        console.log(cat1.name);
+        console.log(cat3.name);
+        //  橘猫
+        //  哈士奇 
+        
+    </script>
+</body>
+</html>
