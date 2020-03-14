@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script src="./js/ajax.js"></script>
+	<script type="text/javascript">
+		ajax({
+			type: 'post',
+			// 请求地址
+			url: 'http://localhost:3000/responseData',
+			success: function (data) {
+				console.log('这里是success函数');
+				console.log(data)
+			}
+		})
+		function ajax (options) {
+			// 创建ajax对象
+			var xhr = new XMLHttpRequest();
+			// 配置ajax请求
+			xhr.open(options.type, options.url);
+			// 发送请求
+			xhr.send();
+			// 请求加载完成
+			xhr.onload = function () {
+				options.success(xhr.responseText);
+			}
+		}
+	</script>
+</body>
+</html>
