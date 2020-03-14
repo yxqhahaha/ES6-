@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 借用父构造函数继承属性
+        // 1 - 父构造函数
+        function Father(uname, age) {
+            // this 指向父类构造函数
+            this.uname = uname;
+            this.age = age;
+        }
+
+        Father.prototype.money = function(){
+            console.log('挣钱');
+        }
+
+        // 2 - 子构造函数
+        function Son(uname, age){
+            // this 指向子构造函数的对象实例
+            Father.call(this, uname, age)
+        }
+        // 借用父类的原型对象来实现继承
+        Son.prototype = new Father();
+        // 如果利用对象的形式修改了原型对象，别忘了用constructor指回原来的构造函数
+        Son.prototype.constructor = Son;
+        Son.prototype.exam = function(){
+            console.log('考试');
+            
+        }
+
+        let son = new Son('ahua', 13);
+        console.log(son);
+        console.log(Son.prototype);
+        console.log(Father.prototype);
+        
+    </script>
+</body>
+</html>

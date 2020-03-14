@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" placeholder="请快点输入内容">
+    <script>
+        /* 
+            Mutation Observer API 用来监视DOM变动。DOM 的任何变动，比如节点的增减，属性的变动，文本内容的变动，这个API都可以得到通知。
+            Mutation Observer 监听是一步，并且在多个标签同时发生修改的时候之后调用一次。
+        */
+
+        // 首先我们创建一个MutationObserver实例。实例里面传入一个回调函数，这个回调函数的目的是为了触发事件之后调用这个方法。
+
+        let observer = new MutationObserver(function (mutations, observer){
+            mutations.forEach( mutation => console.log(mutation));
+            // 使用observer实例里面的observer方法开始监听， 第一个传入标签，第二个传入参数，监听class改动事件。
+            observer.observe ( document.querySelector('input'), {
+                'childList' : true,
+                'attribute' : true,
+                attributeFilter : ['class']
+            })
+            document.querySelector('input').addEventListener('keyup', function(){
+                this.classList.add(this.value)
+            })
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function fn(x, y){
+            console.log('cnyangx :' + (x+y));
+            console.log(this);
+        }
+
+        let Obj = {
+            name: 'cnuyamnhx'
+        }
+
+        fn(1, 2);
+        // call() 改变this指向 此时this指向Obj对象
+        fn.call();      // Window {parent: Window, opener: null, top: Window, length: 0, frames: Window, …}
+        fn.call(Obj, 1, 2);   //{name: "cnuyamnhx"}
+    </script>
+</body>
+</html>

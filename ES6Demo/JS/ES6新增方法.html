@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>boolean null string symbol number undefined</title>
+</head>
+<body>
+    <script>
+        //  1 - forEach(function(){})
+        let arr1 = [1, 23, 435, 5];
+        let sum = 0;
+        arr1.forEach((element, index) => {
+            console.log(element);   // 打印元素
+            console.log(index);     // 打印索引
+            sum += element;
+        });
+
+        console.log(sum);
+
+        // 2 - filter(function(){})
+        //  创建一个新的数组，用于筛选数组，返回的是一个数组，返回所有满足条件的元素
+        let arr2 = arr1.filter( val => {
+            return val > 5;
+        })
+
+        console.log(arr2);  // [23, 435] 
+        
+        // 3 - some(function(){})
+        // 查找数组中是否有满足查找要求的元素,找到第一个就终止循环，返回结果 boolean类型
+        console.log(arr1.some(val => val > 23));    // true
+        
+
+    </script>
+</body>
+</html>
