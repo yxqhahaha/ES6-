@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Access-Control-Allow-Origin" content="*" />
     <title>Document</title>
 </head>
 <body>
@@ -12,12 +13,14 @@
         // 2 - 告诉ajax对象要向哪里发送请求，以什么方式发送请求
         // (1) - 请求方式  （2）- 请求地址
         xhr.open('get', 'http://localhost:3000/first');
-        // 3 - 发送请求
+        // 3 - 发送请求                                              
         xhr.send();
         // 4 - 获取服务器端响应到客户端的数据
         xhr.onload = function () {
-            console.log(xhr.response);
-            console.log(xhr.responseText);
+            // console.log(xhr.responseText);
+            let responseText = JSON.parse(xhr.responseText)
+            console.log(responseText);
+            
         }
 
     </script>
