@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        1. 模拟HTML表单，相当于将HTML表单映射成表单对象，自动将表单对象中的数据拼接成请求参数的格式。
+        2. 异步上传二进制文件
+    -->
+    <form id="form">
+        <input type="text" name="username" />
+        <input type="password" name="password" />
+        <input type="button" id="btn" value="提交"/>
+    </form>
+
+    <script>
+        // 获取按钮
+        let btn = document.getElementById('btn');
+
+        let form = document.getElementById('form')
+        btn.onclick = function () {
+            //  将 HTML 表单转化为 formData 对象
+            let formData = new FormData(form);
+            // 创建ajax对象
+            let xhr = new XMLHttpRequest();
+            xhr.open('post', 'http://********');
+            xhr.send(formData);
+            xhr.onload = function(){
+                if(xhr.status == 200){
+                    console.log(xhr.responseText);
+                }
+            }
+        }
+
+        // 1. Formdata 对象不能用于 get 请求，因为对象需要被传递到 send 方法中，而 get 请求方式的请求参数只能放在请求地址的后面。
+        // 2. 服务器端 bodyParser 模块不能解析 formData 对象表单数据，我们需要使用formidable模块进行解析。
+        // nodejs code
+        /* app.post('/formData', (req, res) => {
+            // 创建formidable表单解析对象
+            const form = new formidable.IncomingForm();
+            // 解析客户端传递过来的FormData对象
+            form.parse(req, (err, fields, files) => {
+                res.send(fields);
+            });
+        }); */
+    </script>
+</body>
+</html>

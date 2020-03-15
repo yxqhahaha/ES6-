@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./jquery.min.js"></script>
+</head>
+<body>
+    <button id="btn">发送ajax请求</button>
+    <script>
+        $('#btn').on('click', function(){
+            $.ajax({
+                type: "get",
+                url: "http://example.com",
+                data: {name: 'cnyangx', age: 20},
+                contentType: 'application/x-www-form-urlencoded',
+                beforeSend: function () { 
+                    return false
+                },
+                success: function (response) {},
+                error: function (xhr) {}
+            });
+        })
+        $.get("url", data,
+            function (data, textStatus, jqXHR) {
+                
+            },
+            "dataType"
+        );
+        
+        $.post("url", data,
+            function (data, textStatus, jqXHR) {
+                
+            },
+            "dataType"
+        );
+    </script>
+</body>
+</html>
